@@ -1,4 +1,4 @@
-import { useReducer, useEffect, useState } from "react";
+import { useReducer, useEffect } from "react";
 import { cartReducer } from "../store/reducers/cartReducer";
 import * as ACTIONS from "../store/actions/cartActions";
 
@@ -10,32 +10,34 @@ const postCartDataToLocalStorage = (cartData) => {
     localStorage.setItem('cartData', JSON.stringify(cartData));
 };
 
-const INITIAL_CART = {
+const INITIAL_STATE = {
     cart: getCartDataFromLocalStorage() || [],
+    total: 0,
+    errors: { err: {}, msg: [] },
 };
 
 const useShoppingCart = () => {
-    const [state, dispatch] = useReducer(cartReducer, INITIAL_CART);
+    const [state, dispatch] = useReducer(cartReducer, INITIAL_STATE);
 
     useEffect(() => {
         postCartDataToLocalStorage(state.cart);
     }, [state.cart]);
 
+    useEffect(() => {
+        dispatch(ACTIONS.updateTotal(state.cart));
+    }, [state.cart]);
 
-    /* const handleCartChange = (e, index) => {
-        const item = e ? e.target.name : null;
-        const newItems = [...cart];
 
-
-        setCart()
-    }; */
-
-    const handleAddItem = (e, name, type) => {
-        addItemToCart(name, state, 'new');
+    const handleCartChange = (qty, id) => {
+        dispatch(ACTIONS.update(qty, id));
     };
 
-    const handleRemoveItem = () => {
-        dispatch(ACTIONS.remove());
+    const handleAddItem = (e, item, type) => {
+        addItemToCart(item, state, 'new');
+    };
+
+    const removeItem = (id) => {
+        dispatch(ACTIONS.remove(id));
     };
 
     const addItemToCart = (item, state, type) => {
@@ -45,9 +47,9 @@ const useShoppingCart = () => {
     return {
         state,
         handleAddItem,
-        handleRemoveItem,
+        removeItem,
+        handleCartChange,
     };
-
 };
 
 export default useShoppingCart;

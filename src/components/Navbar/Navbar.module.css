@@ -1,0 +1,36 @@
+.wrapper {
+    background-color: #222;
+    color: #eee;
+    left: 0;
+    position: fixed;
+    top: 0;
+    width: 100%;
+}
+
+.navList {
+    display: flex;
+    flex-direction: column;
+    list-style: none;
+}
+
+.navLink {
+    cursor: pointer;
+    padding: 20px 24px;
+}
+
+.navLink:hover {
+    background-color: hsl(0, 0%, 20%);
+}
+
+@media screen and (min-width: 1024px) {
+	.navList {
+        flex-direction: row;
+        justify-content: space-evenly;
+	}
+
+    .cartContainer {
+        position: absolute;
+        right: 4px;
+        top: 64px;
+    }
+}

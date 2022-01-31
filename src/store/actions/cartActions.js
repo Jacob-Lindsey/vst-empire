@@ -5,15 +5,39 @@ export const add = (item, state, type) => {
     return {
         type: ACTION_TYPES.ADD_TO_CART,
         payload: {
-            name: item,
+            name: item.name,
+            price: item.price,
             quantity: 1,
+            inStock: item.inStock,
             id: uuidv4(),
         },
     };
 };
 
-export const remove = () => {
+export const remove = (id) => {
     return {
         type: ACTION_TYPES.REMOVE_FROM_CART,
+        payload: {
+            id: id,
+        },
+    };
+};
+
+export const update = (quantity, id) => {
+    return {
+        type: ACTION_TYPES.CHANGE_QUANTITY,
+        payload: {
+            quantity: quantity,
+            id: id,
+        },
+    };
+};
+
+export const updateTotal = (cart) => {
+    return {
+        type: ACTION_TYPES.CALCULATE_TOTAL,
+        payload: {
+            cart: cart,
+        },
     };
 };

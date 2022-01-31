@@ -7,8 +7,8 @@ const AppProvider = ({ children }) => {
     const {
         state,
         handleAddItem,
-        handleRemoveItem,
-        cart,
+        removeItem,
+        handleCartChange,
     } = useShoppingCart();
 
     return (
@@ -16,8 +16,8 @@ const AppProvider = ({ children }) => {
             value={{
                 state,
                 handleAddItem,
-                handleRemoveItem,
-                cart,
+                removeItem,
+                handleCartChange,
             }}
         >
             {children}
