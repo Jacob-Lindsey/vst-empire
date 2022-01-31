@@ -1,23 +1,16 @@
 import logo from './logo.svg';
+import { useGlobalContext } from './store/context/context';
 import './App.css';
 
 function App() {
+
+  const { state, handleAddItem } = useGlobalContext();
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <button onClick={(e) => handleAddItem(e, 'Item 1', 'new')}>Item-1</button>
+      <button onClick={(e) => handleAddItem(e, 'Item 2', 'new')}>Item-2</button>
+      <button onClick={(e) => handleAddItem(e, 'Item 3', 'new')}>Item-3</button>
     </div>
   );
 }
