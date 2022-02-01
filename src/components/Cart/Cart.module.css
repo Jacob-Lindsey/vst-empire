@@ -1,3 +1,7 @@
+.cartWrapper {
+    background-color: hsl(0, 0%, 95%);
+}
+
 .cartHeader {
     color: #222;
     padding: 16px 0 4px 0;

@@ -1,0 +1,43 @@
+.container {
+    margin: 120px auto 0 auto;
+    width: 1080px;
+}
+
+.detailWrapper {
+    display: grid;
+    grid-template-columns: 2fr 50% 1fr;
+}
+
+.image {
+
+}
+
+.descriptionWrapper {
+    display: flex;
+    flex-direction: column;
+}
+
+.name {
+
+}
+
+.description {
+
+}
+
+.priceWrapper {
+    display: flex;
+    flex-direction: column;
+}
+
+.priceLabel {
+
+}
+
+.price {
+
+}
+
+.button {
+
+}

@@ -1,9 +1,10 @@
+import { v4 as uuidv4 } from "uuid";
 import faker from "@faker-js/faker";
+import { Link } from "react-router-dom";
 import styles from "./ProductList.module.css";
 
 const ProductList = () => {
 
-    const maxPrice = Math.random() * 500;
     const maxStock = () => Math.floor(Math.random() * 60);
     const times = (n, func) => {
         let x = 0;
@@ -18,12 +19,13 @@ const ProductList = () => {
 
     for (let i=0; i<100; i++) {
         let newProduct = {
-            name: faker.commerce.productName(),
-            price: faker.commerce.price(0, maxPrice),
+            name: faker.hacker.noun(),
+            price: faker.finance.amount(20,500,2),
             description: faker.commerce.productDescription(),
             sku: times(16, faker.random.alphaNumeric),
-            brand: faker.company.companyName(),
+            brand: faker.random.word(),
             inStock: maxStock(),
+            id: uuidv4(),
         }
         products.push(newProduct);
     };    
@@ -33,18 +35,30 @@ const ProductList = () => {
             {
                 products.map((item) => {
                     return (
-                        <div className={styles.item} key={item.sku}>
-                            <div className={styles.itemHeader}>
-                                <span>{item.name}</span>
-                                <span>${item.price}</span>
+                        <Link 
+                            className={styles.link}
+                            to={`/vst/${item.id}`}
+                            state={{ item: {item} }}
+                            key={item.sku}
+                        >
+                            <div className={styles.item}>
+                                <div className={styles.itemUpper}>
+                                    <div className={styles.itemHeader}>
+                                        <span>{item.name}</span>
+                                    </div>
+                                    <div className={styles.itemImg}>
+                                        <img src={`https://via.placeholder.com/220x150/222222/DDDDDD/?text=${item.name}`} alt='' />
+                                    </div>
+                                    <div className={styles.itemInfo}>
+                                        {item.brand}
+                                    </div>
+                                </div>
+                                <div className={styles.itemFooter}>
+                                    <span className={styles.footerName}>{item.name}</span>
+                                    <span className={styles.footerPrice}>${item.price}</span>
+                                </div>
                             </div>
-                            <div className={styles.itemSubHeader}>{item.inStock} Left In Stock</div>
-                            <div className={styles.itemInfo}>
-                                <h3>{item.brand}</h3>
-                                <p>{item.description}</p>
-                            </div>
-                            <div className={styles.itemFooter}>Product SKU: {item.sku}</div>
-                        </div>
+                        </Link>
                     )
                 })
             }

@@ -11,7 +11,7 @@ export const add = (item, state, type) => {
             inStock: item.inStock,
             description: item.description,
             sku: item.sku,
-            id: uuidv4(),
+            id: item.id,
         },
     };
 };
