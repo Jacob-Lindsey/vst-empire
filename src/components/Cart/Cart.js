@@ -3,7 +3,7 @@ import styles from "./Cart.module.css";
 import Wrapper from "../Wrapper/Wrapper";
 
 const Cart = () => {
-    const { state, handleAddItem, removeItem, handleCartChange } = useGlobalContext();
+    const { state, removeItem, handleCartChange } = useGlobalContext();
 
     const preventNaN = (e) => {
         if (isNaN(parseInt(e.key)) && e.target.value <= 9) {
@@ -35,10 +35,10 @@ const Cart = () => {
 
     return (
         <>
-            <button className={styles.productButton} onClick={(e) => handleAddItem(e, items[0], 'new')}>Item-1</button>
-            <button className={styles.productButton} onClick={(e) => handleAddItem(e, items[1], 'new')}>Item-2</button>
-            <button className={styles.productButton} onClick={(e) => handleAddItem(e, items[2], 'new')}>Item-3</button>
-            <Wrapper>
+            <Wrapper direction='col'>
+                <header className={styles.cartHeader}>
+                    <h1 className={styles.cartTitle}>Your Cart</h1>
+                </header>
                 <ul className={styles.list}>
                     {state.cart
                         ? state.cart.map((item) => {
@@ -67,7 +67,14 @@ const Cart = () => {
                     }
                 </ul>
                 <section className={styles.checkoutInfo}>
-                    Total: ${parseFloat(total.toFixed(2)).toLocaleString('en')}
+                    <span className={styles.grandTotal}>
+                        <span className={styles.subtotal}>Subtotal</span>
+                        <span className={styles.totalAmount}>${parseFloat(total.toFixed(2)).toLocaleString('en')}</span>
+                    </span>
+                    <span className={styles.checkoutButtons}>
+                        <button>Checkout</button>
+                    </span>
+                    
                 </section>
             </Wrapper>
         </>

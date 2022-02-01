@@ -10,6 +10,8 @@ export const cartReducer = (state, action) => {
                 quantity: action.payload.quantity,
                 total: action.payload.price * action.payload.quantity,
                 inStock: action.payload.inStock,
+                description: action.payload.description,
+                sku: action.payload.sku,
                 id: action.payload.id,
             },
             ...state.cart,

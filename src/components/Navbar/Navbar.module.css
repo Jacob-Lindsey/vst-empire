@@ -4,6 +4,7 @@
     left: 0;
     position: fixed;
     top: 0;
+    visibility: hidden;
     width: 100%;
 }
 
@@ -11,11 +12,12 @@
     display: flex;
     flex-direction: column;
     list-style: none;
+    padding: none !important;
 }
 
 .navLink {
     cursor: pointer;
-    padding: 20px 24px;
+    padding: 20px 0;
 }
 
 .navLink:hover {
@@ -23,14 +25,24 @@
 }
 
 @media screen and (min-width: 1024px) {
+    .wrapper {
+        visibility: visible;
+    }
+
 	.navList {
         flex-direction: row;
         justify-content: space-evenly;
 	}
 
     .cartContainer {
+        border: 1px solid #ccc;
+        box-shadow: 2px 2px 8px 0px #00000038;
         position: absolute;
-        right: 4px;
+        right: 16px;
         top: 64px;
+    }
+
+    .navLink {
+        padding: 20px 24px;
     }
 }

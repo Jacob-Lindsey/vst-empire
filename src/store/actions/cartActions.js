@@ -9,6 +9,8 @@ export const add = (item, state, type) => {
             price: item.price,
             quantity: 1,
             inStock: item.inStock,
+            description: item.description,
+            sku: item.sku,
             id: uuidv4(),
         },
     };

@@ -1,9 +1,9 @@
 import styles from "./Wrapper.module.css";
 
-const Wrapper = ({ children }) => {
+const Wrapper = (props) => {
     return (
-        <section className={styles.wrapper}>
-            {children}
+        <section className={props.direction === 'col' ? styles.wrapperCol : styles.wrapperRow}>
+            {props.children}
         </section>
     )
 };
