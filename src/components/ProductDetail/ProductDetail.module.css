@@ -1,43 +1,92 @@
 .container {
-    margin: 120px auto 0 auto;
-    width: 1080px;
+  margin: 72px 0 0 0;
+  width: 100%;
 }
 
 .detailWrapper {
-    display: grid;
-    grid-template-columns: 2fr 50% 1fr;
+  display: flex;
+  flex-direction: column;
 }
 
 .image {
-
 }
 
 .descriptionWrapper {
-    display: flex;
-    flex-direction: column;
+  display: flex;
+  flex-direction: column;
 }
 
 .name {
-
 }
 
 .description {
-
 }
 
 .priceWrapper {
-    display: flex;
-    flex-direction: column;
+  display: flex;
+  flex-direction: column;
 }
 
 .priceLabel {
-
 }
 
 .price {
-
 }
 
 .button {
+}
 
+@media screen and (min-width: 1024px) {
+  .container {
+    margin: 120px auto 0 auto;
+    width: 1270px;
+  }
+
+  .descriptionWrapper,
+  .detailWrapper,
+  .priceWrapper {
+    padding: 0 15px 30px;
+  }
+
+  .detailWrapper {
+    display: grid;
+    grid-template-columns: 35% 40% 25%;
+  }
+
+  .image {
+  }
+
+  .descriptionWrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 20%;
+  }
+
+  .name,
+  .description,
+  .brand {
+    text-align: left;
+  }
+
+  .priceWrapper {
+    display: flex;
+    flex-direction: column;
+    padding: 32px 16px;
+  }
+
+  .priceLabel {
+    font-size: 26px;
+    font-weight: 500;
+  }
+
+  .price {
+    font-size: 42px;
+    font-weight: 600;
+  }
+
+  .button {
+    font-size: 18px;
+    font-weight: 500;
+    line-height: 2.6rem;
+  }
 }
